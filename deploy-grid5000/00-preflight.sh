@@ -9,7 +9,7 @@ source "$(dirname "$0")/lib.sh"
 
 [[ $(id -u) -eq 0 ]] || die "run this script as root on the control-plane node"
 
-for command in awk curl git go jq kubectl sed ssh; do
+for command in awk curl git go jq kubectl python3 sed ssh; do
   require_command "$command"
 done
 

@@ -1,0 +1,27 @@
+name: Substrate deployment checks
+
+on:
+  push:
+    paths:
+      - 'deploy-grid5000/**'
+      - '.github/workflows/substrate-deployment-checks.yml'
+  pull_request:
+    paths:
+      - 'deploy-grid5000/**'
+      - '.github/workflows/substrate-deployment-checks.yml'
+
+jobs:
+  syntax-and-unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bash syntax
+        run: |
+          find deploy-grid5000 -type f -name '*.sh' -print0 | xargs -0 -n1 bash -n
+      - name: Python unit tests
+        run: python3 -m unittest discover -s deploy-grid5000/tests -v
+      - name: ShellCheck
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq shellcheck
+          shellcheck -x -P SCRIPTDIR -S warning deploy-grid5000/*.sh
