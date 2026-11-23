@@ -8,3 +8,5 @@ Grid'5000 tooling for sandbox / substrate experiments.
 | [`deploy-grid5000`](./deploy-grid5000) | Deploy **Agent Substrate** from source on an existing cluster and run Counter Actor acceptance |
 
 Typical order: create the cluster with `deploy-k8s-g5k`, then run `deploy-grid5000` on the control plane.
+
+**Tutorial:** [deploy-grid5000/TUTORIAL.md](./deploy-grid5000/TUTORIAL.md) — English walkthrough from Kubernetes to verified Agent Substrate.

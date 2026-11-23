@@ -43,7 +43,8 @@ Kubernetes cluster (after [`../deploy-k8s-g5k`](../deploy-k8s-g5k)).
    sudo deploy-grid5000/deploy-all.sh
    ```
 
-Full narrative (cert APIs, storage, registry, verification): [DEPLOYMENT.md](./DEPLOYMENT.md).
+- **Tutorial (step-by-step):** [TUTORIAL.md](./TUTORIAL.md)
+- **Reference:** [DEPLOYMENT.md](./DEPLOYMENT.md)
 
 ## Phases
 
