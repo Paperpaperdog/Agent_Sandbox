@@ -1,0 +1,1219 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{3} % number main sections and subsections
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{caption}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% \DeclareUnicodeCharacter is available only with the pdfTeX inputenc path.
+% Unicode engines handle these characters natively via fontspec/unicode-math.
+\ifPDFTeX
+\DeclareUnicodeCharacter{2264}{\ensuremath{\leq}}
+\DeclareUnicodeCharacter{2265}{\ensuremath{\geq}}
+\DeclareUnicodeCharacter{2248}{\ensuremath{\approx}}
+\DeclareUnicodeCharacter{2212}{\ensuremath{-}}
+\DeclareUnicodeCharacter{26A0}{\textbf{[!]}}
+\DeclareUnicodeCharacter{FE0F}{}
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX}}
+
+\title{Agent Sandbox Lifecycle Churn: A Use-case-grounded Benchmark Proposal}
+\author{Bingrui Jin \qquad Natalia Naranjo Rodríguez\\[0.5em]\small Supervisor: Chih-Kai Huang}
+\date{Télécom Paris --- November 2026}
+
+\begin{document}
+\maketitle
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+\section{Introduction and Research Gap}
+\label{sec:introduction}
+\subsection{Motivation and research question}
+Sandbox startup is only one event in an agent execution
+environment's lifecycle. Coding agents issue multiple
+commands, pause for review and reuse state; evaluation
+coordinators create and release many independent trials;
+and persistent agents may receive new requests after
+long inactivity. These application events generate
+provisioning, scheduling, execution, retention and
+cleanup work on Kubernetes and platform-specific
+controllers or worker pools.
+
+The central research question is:
+\begin{quote}
+\textbf{How do Kubernetes-based sandbox architectures
+handle lifecycle churn, and where do control-plane
+and runtime bottlenecks emerge under sustained,
+bursty and intermittent agent workloads?}
+\end{quote}
+
+Rather than rank sandbox products by a single
+ready timestamp, we follow a user-level request
+through the first independently verified command
+or task result, together with the infrastructure
+operations required to deliver it.
+
+\subsection{Existing work and the research gap}
+Prior research and engineering benchmarks address
+important parts of sandbox performance, but typically
+under different workloads, hardware, isolation runtimes
+or state contracts. Their results should not be
+combined into an uncontrolled leaderboard.
+
+{\small
+\begin{longtable}{@{}p{0.24\linewidth}p{0.31\linewidth}p{0.37\linewidth}@{}}
+\toprule
+Prior work & Established focus & Comparative question left open\\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+Sandman \cite{sandman} &
+High-concurrency provisioning and lifecycle
+management for production agentic RL. &
+How do different Kubernetes-managed architectures
+behave for the same independently verified task?\\
+SIGs Agent Sandbox tuning \cite{sigTuning} &
+Controller concurrency, warm claims,
+bursts, sustained demand and API overhead. &
+Where do lifecycle costs move between
+Kubernetes and specialized controllers/workers?\\
+ARIES \cite{ariesPaper,ariesRepo} &
+Agent trajectories, runtime experiments
+and resource attribution. &
+How do real task events map to native
+sandbox lifecycle work and state guarantees?\\
+Checkpoint and Fast Sandbox studies
+\cite{deltaBox,fastPerformance} &
+Snapshot/restore performance, prepared
+templates and runtime-specific paths. &
+How do preparation, state fidelity and
+client-visible execution affect comparisons?\\
+Open benchmarks
+\cite{frigaBenchmark,computeBenchmark} &
+Hosted tool/first-command timings and
+independent execution checks. &
+What happens under matched Kubernetes
+hardware with observability across layers?\\
+\end{longtable}
+}
+
+The intended gap is a \emph{cross-architecture,
+use-case-grounded lifecycle benchmark} with a
+common task contract, correctness checks and
+qualified attribution across Kubernetes,
+specialized management components and execution
+runtimes. This is a proposed research direction,
+not an unverified claim of absolute novelty.
+
+\subsection{Research questions and intended contributions}
+Three questions guide the experiment.
+\begin{enumerate}
+\item \textbf{RQ1 (cost placement):} Which Kubernetes,
+specialized control-plane, runtime and storage
+operations does each workload induce?
+\item \textbf{RQ2 (load response):} Where do
+verified throughput, latency and reliability
+degrade under bursts and sustained churn?
+\item \textbf{RQ3 (idle/state):} How do native
+idle-management policies change user-return
+latency, resource cost and state correctness?
+\end{enumerate}
+
+Subject to successful deployment and measurements,
+potential contributions are a reproducible
+application-derived benchmark, a state-aware
+comparison, cross-layer bottleneck evidence,
+and conditional architecture--workload trade-offs.
+The study is not designed to declare a universal
+best sandbox platform.
+
+\section{Systems and Architecture Taxonomy}
+\label{sec:systems}
+\subsection{Kubernetes-based candidate architectures}
+Five candidate configurations remain in scope.
+They do not all map one logical sandbox to one
+Pod: some use Kubernetes-managed pools of
+workers that admit further guest or actor execution.
+
+{\small
+\begin{longtable}{@{}p{0.24\linewidth}p{0.45\linewidth}p{0.23\linewidth}@{}}
+\toprule
+Candidate & Lifecycle architecture and distinction & Feasibility priority\\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+Native Kubernetes Pod &
+Direct Pod scheduling, execution and deletion.
+Cold baseline; an optional pre-created warm-Pod
+allocator is a \emph{separate configuration}. &
+P0 baseline\\
+SIGs Agent Sandbox \cite{sigAgent} &
+Sandbox/Claim controller and optional WarmPool;
+study reconciliation, allocation/refill and
+declared idle-state behavior. &
+P0\\
+OpenSandbox BatchSandbox \cite{openSandbox} &
+OpenSandbox API backed by Kubernetes Pods;
+inspect the actual API/backend control path. &
+P2 if distinct and feasible\\
+OpenSandbox + Fast Sandbox \cite{fastSandbox} &
+FastPath/Fastlet admission with multiple
+Firecracker guests per Kubernetes-managed
+worker; requires suitable host capabilities. &
+P1 conditional\\
+Agent Substrate \cite{substrate} &
+Persistent actor identities, specialized
+control plane, WorkerPool and checkpoint/
+restore mechanisms; a task command endpoint
+must be verified in the actor image. &
+P1 conditional\\
+\end{longtable}
+}
+
+The native cold baseline and any warm-Pod
+allocator must be reported separately. Warm
+capacity, pool refill, image caching,
+resource reservations and preparation are
+explicit controls. A native warm-pool
+replica count does not establish a
+platform's total concurrent-execution limit.
+
+\subsection{State semantics and comparison strata}
+Different lifecycle systems promise
+different forms of state continuity:
+\textbf{Tier 0} is an independently verified
+command in an isolated environment;
+\textbf{Tier 1} adds verified file/SQLite
+continuity across the declared idle or
+recreation path; and \textbf{Tier 2}
+adds live process/memory restoration.
+
+Compare all eligible systems on Tier 0,
+and only systems that demonstrate the
+relevant Tier 1 or Tier 2 contract on
+those respective subtests.
+Tier 2 is a separate optional
+mechanism probe, not a prerequisite
+for Scenario A/B or primary C1.
+A PVC-backed Pod re-creation does
+\emph{not} restore process memory.
+An unsupported feature is reported
+as N/A; installation failures
+are reported separately from
+task performance.
+
+The extended five-platform capability
+matrix and version-specific API
+mapping are retained in the
+technical appendix; documentation
+alone does not establish that
+a feature runs on Grid'5000.
+
+\section{Benchmark Design and Methodology}
+\label{sec:methodology}
+\subsection{Application events and observable contract}
+An external, deterministic driver maps application
+events onto an adapter for each system.
+The driver requires \texttt{acquire},
+\texttt{execute} and \texttt{release},
+and records passive state when available.
+The optional \texttt{suspend}/\texttt{resume}
+mechanism test (C2) is separate: the main
+A and C1 workloads allow each platform
+to follow its \emph{native} idle policy,
+without a driver-forced state transition.
+
+{\small
+\begin{longtable}{@{}p{0.27\linewidth}p{0.61\linewidth}@{}}
+\toprule
+Event & Observable completion and distinction\\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+Acquire / first use &
+Acquisition request until the \emph{first
+independently verified fixed command}.
+Record API response and Pod Ready,
+when available, as intermediate milestones.\\
+Execute &
+Command submission until verified
+exit status, output and required task files.\\
+Idle / follow-up &
+The idle gap ends on the new application
+request. User-return latency is measured
+from \emph{that request} until its first
+verified command with correct retained state;
+do not include the programmed idle gap.\\
+Release &
+Request until the logical identity is
+inaccessible; separately observe physical
+resource reclamation, reuse-ready capacity
+and policy-retained data.\\
+\end{longtable}
+}
+
+The workload is a pinned deterministic
+application proxy with independent file,
+test and/or database assertions. Live
+LLM inference is kept off the timed path.
+A successful API acknowledgement does
+not establish task completion.
+
+\subsection{Five core metric groups}\label{metric-definitions}
+The Week 2 measurement dimensions are
+retained in five groups, with no separate
+mandatory platform-specific scorecard.
+
+{\small
+\begin{longtable}{@{}p{0.26\linewidth}p{0.48\linewidth}p{0.18\linewidth}@{}}
+\toprule
+Core metric & Primary quantities & Collection\\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+1. Lifecycle latency &
+Request-to-first-verified-command, follow-up,
+execution and logical cleanup latency;
+per-run medians and raw small-cell samples;
+p95 only with adequate sample size. &
+Driver/verifier\\
+2. Successful throughput &
+Correctly completed tasks/trials or
+return events per second versus
+offered load; burst drain time. &
+Driver events\\
+3. Reliability and correctness &
+Success, timeout, failure and incomplete
+fractions; file/DB continuity, isolation
+and expected final cleanup. &
+Verifier/logs\\
+4. Control-plane overhead &
+Kubernetes API write requests and
+Kubernetes/specialized management
+CPU-seconds per verified unit;
+publish raw totals. &
+API/CPU metrics\\
+5. Resource efficiency &
+Runtime CPU-seconds, memory GiB-seconds
+and active/idle cost; reserved
+capacity reported separately. &
+Cgroup/host\\
+\end{longtable}
+}
+
+Optional \emph{bottleneck diagnostics}
+include API latency histograms,
+Scheduler pending Pods, controller
+workqueues, etcd WAL fsync, pool
+occupancy and snapshot I/O when
+the deployed release actually exposes
+them. A count of unfinished client
+requests is \emph{not} internal queue
+depth. Missing telemetry is N/A,
+not zero.
+
+\subsection{Comparability, normalization and statistics}
+Pin the reserved cluster topology,
+platform/Kubernetes versions,
+task image and resources, driver
+placement, cache state, network
+conditions, preparation policy
+and warm-pool budget. Differences
+in isolation runtimes, storage or
+prewarming that cannot be held
+constant remain explicitly
+reported confounding factors.
+
+\textbf{Idle-policy configuration.} For every
+platform and scenario, log the actual policy:
+automatic pause/stop or reclaim enabled,
+idle TTL/threshold, warm-pool size, retention
+and cleanup grace period, and measured active
+execution capacity. Record the observed native
+transitions as well as the configured values.
+Report default and explicitly tuned policies as
+\emph{separate} configurations; do not pool their
+results or attribute policy differences solely
+to architecture. A/C1 never force a pause.
+
+Compute API write counts (CREATE,
+UPDATE, PATCH, DELETE) from
+isolated-window counter changes,
+and control-plane CPU consumption
+from verified component counters.
+API counters do \emph{not} label
+each logical session: any
+background-adjusted per-success
+cost is an estimate. Keep all
+failed attempts in the numerator,
+publish raw totals and actual
+success denominators, and mark
+zero-success normalized cost
+undefined. CPU-seconds and
+GiB-seconds must not be added.
+
+Plan five independent repetitions
+for each feasible primary cell
+(at least three if resources
+prevent five). Reset logical
+tasks and retain preparation
+conditions and between-run
+variability. \textbf{Small-sample rule:}
+for fewer than 100 independently
+verified completions in a
+predeclared analysis cell, report
+all client-observed latencies
+(or the full sorted values),
+median, range, completion counts
+and failure/timeout rates.
+Do not use a 5--10-request
+P95/P99 as a stable tail result.
+From 100 verified observations,
+a descriptive p95 may be
+reported with its sample count
+and between-run variation; this
+is a pragmatic minimum, not
+a guarantee of statistical
+precision. A p99 requires
+substantially more samples
+(e.g., at least 1,000
+completed observations) and
+is never mandatory. Preserve
+per-run results even when a
+pooled distribution is shown.
+Success/timeout rates use
+all offered requests; never
+assign an invented completion
+latency to timeouts.
+
+Finally, distinguish
+\emph{documented application
+behavior}, measured trace data,
+reproducible task proxies and
+synthetic experimental parameters.
+A shortened gap or synchronized
+burst is a design choice, not
+a production-arrival estimate.
+
+\section{Use-case-grounded Scenarios}
+\label{sec:scenarios}
+These complementary workloads follow
+\textbf{real application event patterns},
+but their exact timing, batch size and
+resource budgets are controlled experimental
+parameters unless explicitly trace-derived.
+\textbf{A and B are the primary study};
+\textbf{C is optional Phase 2}.
+Session, evaluation trial and persistent
+user identity are different measurement units.
+
+{\small
+\begin{longtable}{@{}p{0.18\linewidth}p{0.36\linewidth}p{0.36\linewidth}@{}}
+\toprule
+Scenario & Application anchor & Distinct research question\\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+A (primary) &
+Coding task followed by human review
+and same-task continuation. &
+How do idle and state reuse affect
+the user's follow-up latency?\\
+B (primary) &
+Parallel short-lived evaluation trials
+with automated verification. &
+Where do provisioning, admission
+and cleanup become bottlenecks?\\
+C (optional) &
+Independent persistent user identities
+sharing constrained execution slots. &
+How does native idle management
+trade resource cost for return latency?\\
+\end{longtable}
+}
+
+\subsection{A. Coding-agent continuation}
+\label{scenario-a-coding-agent-continuation}
+
+\textbf{Motivation.} Coding assistants can
+edit a repository, run tools and tests,
+then continue the same task after
+developer feedback \cite{codexCloud,sweAgent}.
+This tests the complete application session,
+not only first Pod readiness.
+
+\textbf{Workflow.} Acquire a sandbox for a
+pinned repository and dependency image;
+prepare a Python environment, apply
+a deterministic first patch and verify tests;
+wait through a review interval while
+the platform applies its native idle policy;
+apply a second patch to the \emph{same logical
+task}, verify files/tests and release.
+The scripted proxy has exactly
+\textbf{two application turns and one
+review gap}. A runtime may rebind its
+physical container, but losing required
+workspace state counts as failure.
+
+\textbf{Parameters.} Use \textbf{10 primary
+concurrent sessions}; 50 and 200 are
+capacity-gated sensitivity levels.
+A \textbf{120 s review gap} is synthetic,
+not a replay of a production trace;
+a separate 600 s native-policy probe
+is optional. Provisional per-sandbox
+resources are \textbf{2 vCPU,
+4 GiB RAM, 10 GiB disk}. At 200
+simultaneously reserved sandboxes,
+the requested RAM alone would be
+800 GiB before system overhead,
+so this level must not be promised
+on an unverified three-node testbed.
+
+\textbf{Measurements.} First-verified-command
+latency, follow-up request-to-verified-
+command latency, file/test correctness,
+idle CPU and memory cost, control-plane
+work and logical cleanup. Observe actual
+keep-alive, pause or recreation behavior
+rather than assuming the gap triggers
+eviction. Detailed command recipes and
+the verifier are retained in the
+technical appendix.
+
+\subsection{B. Parallel agent evaluation}
+\label{scenario-b-parallel-agent-evaluation}
+
+\textbf{Motivation.} Evaluators and
+agentic RL training systems issue
+independent coding or terminal tasks
+with multiple commands, verification
+and environment cleanup. Sandman
+and the official Harbor integration
+provide concrete lifecycle anchors
+\cite{sandman,terminalBench,harborIntegration}.
+
+\textbf{Workflow.} A coordinator assigns
+a batch of pinned trials. Each acquires
+an isolated environment, runs 3--5
+deterministic task steps or fixed oracle
+commands, verifies the final result,
+then releases resources. Trial state
+does \emph{not} persist between
+different evaluation tasks.
+
+\textbf{Parameters.} Use a provisional
+\textbf{1 vCPU/2 GiB} resource budget
+and a \textbf{30--60 s} short-trial
+target where feasible. Pilot at
+\textbf{N=10/25}; start comparative
+bursts at \textbf{N=50} only if
+the pilot passes. Explore N=100,
+200 and higher values subject
+to actual cluster admission;
+\textbf{N=1,000 is an optional
+exploration ceiling}, not a
+promised operating point. A
+40/30/20/10 mix of I/O,
+network/filesystem, CPU and
+minimal tasks is an explicitly
+synthetic heterogeneity option.
+
+\textbf{Load modes.} The primary
+synchronized-batch experiment
+explores a \emph{degradation interval},
+not one universal saturation knee.
+For a low-sample exploratory sweep,
+a provisional passing level requires
+at least 95\% verified completions
+before the declared deadline and
+median first-command latency no
+more than twice that platform's
+low-load median. Repeated trials
+then validate a separate
+\emph{tail-latency degradation
+criterion}: p95 at most twice
+the low-load p95, only when
+both baseline and evaluated
+load have at least 100
+successful observed first-command
+latencies across declared
+independent repetitions.
+If samples are insufficient,
+report a success/median-based
+transition range and explicitly
+mark the p95 boundary
+\emph{undetermined}, rather than
+claiming a validated tail knee.
+Repeat the last passing and
+first failing levels to
+check verdict stability;
+retain unresolved boundaries
+and report the actual
+hardware/admission limits.
+The 95\% and $2\times$
+thresholds are research
+choices, not production SLOs.
+A secondary sustained-churn
+sweep at predeclared
+$R_0/2$, $R_0$, and $2R_0$
+holds task mix and
+preparation fixed and
+does not establish a precise
+sustained saturation limit.
+
+\textbf{Measurements.} Successful
+verified trials/s versus offered
+load, first-command and task
+latency, failure/timeout rates,
+API and specialized management
+cost, worker utilization,
+pool refill and cleanup.
+The full load sweep and task
+composition are archived in
+the technical appendix.
+
+\subsection{C. Persistent multi-user agents (optional Phase 2)}
+\label{scenario-c-oversubscription-and-simultaneous-wake-phase-2}
+
+\textbf{Motivation.} A covers
+continued work within a coding
+task; B covers short-lived trials.
+Neither isolates \emph{many
+persistent identities} sharing
+a smaller verified execution
+budget. Human-facing intermittent
+agents and the documented Hermes
+lifecycle motivate the pattern
+\cite{dietz2025,datadog2026,hermesAaaS}.
+They do not prove one universal
+user-to-capacity ratio.
+
+\textbf{Workflow.} Initialize
+separate user identities with
+private SQLite/files and verify
+their initial commands. During
+idle periods, the driver issues
+no explicit suspend or resume.
+User returns trigger a native
+keep-alive, wake or recreation
+path; independent assertions
+must confirm the correct
+\emph{user's} persisted state.
+
+\textbf{Parameters.} The primary
+design initializes \textbf{$N=20$
+logical users}, a target
+\textbf{$M=5$ usable execution
+slots} ($R=N/M=4$),
+\textbf{three requests per user}
+separated by \textbf{two 300 s
+idle gaps}, and about 1 MB
+SQLite state plus two files
+per identity. These are
+\emph{synthetic design choices}.
+The synthetic 300 s interval
+is informed by observed
+agent idle behavior
+\cite{liu2026}; that study's
+243 s median cross-turn
+container resource-idle
+interval is \emph{not}
+a configured eviction
+threshold.
+A five-slot limit must be
+verified on the actual platform;
+it is not equivalent to
+five warm-pool spare Pods.
+$R=4$ alone does not prove
+that requests will queue.
+
+\textbf{Return modes.} The
+\emph{primary} C1 test
+staggers initial requests by
+a nominal \textbf{10 s},
+then schedules each user's
+next request 300 s after its
+previous verified command;
+record actual inter-arrival
+and idle times. A
+\emph{secondary} one-second
+synchronized stress probe
+uses $B=5/10/20$ returning
+users, with $B\leq N$.
+Neither schedule is a
+measured production arrival
+distribution. Optional $N=50/100$,
+$M=10/20$ and gap sensitivity
+levels require verified
+hardware capacity and
+Tier 1 state support.
+Explicit C2 suspend/restore
+is an optional mechanism-only
+test on eligible systems.
+
+\textbf{Measurements.} Verified
+per-user return latency,
+success and state correctness,
+idle runtime cost, resource
+occupancy and observed native
+lifecycle path. Admission
+backlog is a diagnostic only
+when the platform actually
+reports queue events/metrics.
+Staggered arrival results and
+synchronized stress results
+are always reported separately;
+a small 5/10-user sample
+must not drive a p99
+performance conclusion.
+
+\section{Experimental Setup and Feasibility}
+\label{sec:experimental-setup}
+\subsection{Grid'5000 testbed plan}
+The initial candidate is the
+Grid'5000 Rennes site, focusing
+on \texttt{paradoxe} when an
+appropriate reservation can be
+obtained. The proposed topology
+is one control-plane node and
+two homogeneous Kubernetes
+workers, but actual node
+availability and the resource
+allocation determine the setup.
+
+For each run, record exact
+node identifiers, CPU and
+allocatable RAM, storage
+and network topology,
+kernel/cgroup mode, Kubernetes
+and platform releases,
+CNI/PVC configuration
+and monitoring placement.
+KVM/TUN and microVM snapshot
+prerequisites are checked
+only for relevant candidates;
+the planned tasks include
+CPU, filesystem, storage
+and network activity, but
+do not require a GPU.
+
+\subsection{Pilot and shortlist}
+The first objective is a
+\emph{repeatable, observable
+execution environment}, not
+a peak-throughput claim.
+
+\begin{enumerate}
+\item Reserve suitable nodes,
+deploy Kubernetes, and
+verify core networking,
+volume provisioning and
+control-plane metrics.
+\item Run a small preflight
+task (write a file, perform
+a computation, execute
+a dependent command,
+check output, then delete).
+It is a \emph{smoke test},
+not a fourth benchmark.
+\item Complete the Tier 0
+contract first on
+\textbf{Native Pod} and
+\textbf{SIGs Agent Sandbox};
+validate Tier 1 only when
+the scenario requires it.
+\item Perform one small
+fully logged A and B replay
+before scaling; retain
+failed and timed-out
+requests and verify
+physical cleanup.
+\item Attempt Agent Substrate,
+OpenSandbox Batch or Fast
+only after runtime/storage
+prerequisites and a
+useful architecture
+distinction are established.
+\end{enumerate}
+
+{\small
+\begin{longtable}{@{}p{0.27\linewidth}p{0.60\linewidth}@{}}
+\toprule
+Pilot gate & Required evidence\\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+Functional &
+Verified first and repeated
+commands, output assertions
+and cleanup of one session.\\
+State &
+File/DB continuity for
+Tier 1; separate
+process-memory evidence
+if Tier 2 is claimed.\\
+Capacity &
+Actual Pod/worker admission
+limit, image/warm-pool
+budget and allocatable
+host resources.\\
+Telemetry &
+Correlated driver timestamps,
+Kubernetes API counters,
+measured CPU/memory series
+and identified missing
+diagnostic signals.\\
+Reproducibility &
+Pinned versions, manifests,
+task image, raw failures
+and an archived run record.\\
+\end{longtable}
+}
+
+A non-deployable candidate
+is described as
+\emph{infeasible on the
+tested configuration},
+not universally slower.
+No Grid'5000 comparative
+performance result is
+established by this
+planning document.
+
+The complete OAR/Kadeploy
+workflow, adapter endpoint
+details, common-image
+requirements and per-system
+PoC record form are maintained
+outside the proposal in
+the technical appendix and
+Grid'5000 deployment guide.
+
+\section{Expected Analysis and Limitations}
+\label{sec:analysis}
+\subsection{Expected evidence and comparison}
+First, compare \emph{verified
+application outcomes} on
+common feasible workload
+cells: per-run latency,
+successful throughput,
+failure rates, measured
+management work and
+runtime resource efficiency.
+Second, use optional
+diagnostics to locate
+symptoms in the Kubernetes
+API/scheduler/controller,
+specialized admission and
+worker components,
+guest runtime or storage.
+Third, explain whether
+warm preparation, native
+idle policy, state semantics
+or pool capacity change
+the observed trade-off,
+without assuming a
+universal winner.
+
+For Scenario B, report
+both common-load comparisons
+and the validated
+\emph{degradation interval}.
+For Scenario C, keep
+staggered user experience,
+secondary synchronized
+stress and optional
+explicit C2 mechanism
+tests as distinct analyses.
+Latency changes by
+themselves do not prove
+that a particular
+component saturated.
+
+\subsection{Threats to validity}
+The application patterns
+have documented precedents,
+but the task proxies,
+arrival schedules,
+concurrency, resource
+budgets and compressed
+gaps are predominantly
+\emph{synthetic experiment
+choices}, not exact
+production trace replays.
+A small Grid'5000
+cluster may expose
+different bottlenecks
+and absolute thresholds
+from a larger fleet.
+The same user-to-slot
+ratio does not imply
+equal queueing across
+different deployments.
+
+Cache state, snapshot
+preparation, network
+placement, CPU/guest
+runtime, storage and
+platform-native scheduling
+cannot necessarily be
+held identical; system
+results should be
+interpreted as
+\emph{native-stack
+comparisons with reported
+co-varying factors}.
+File continuity after
+PVC-backed recreation
+is distinct from
+process-memory restoration.
+Missing telemetry,
+unsupported mechanisms
+and installation failures
+must be reported honestly.
+
+Statistics are also
+bounded by sample
+counts, timeouts and
+per-run variability:
+a handful of returning
+users cannot establish
+reliable p99 tails.
+Published vendor
+figures and unverified
+capacity assumptions
+are not substitutes
+for measurements on
+the pinned releases.
+The \href{https://github.com/HarvardMadSys/freeinference_agentic_trace}
+{FreeInference Agentic Trace}
+may inform time
+distributions, but
+does not contain
+direct Kubernetes
+lifecycle events
+or prove individual
+platform eviction
+behavior.
+
+\subsection{Planned deliverables and contribution boundary}
+The proposed outputs
+are (i) a reproducible
+application-event driver
+and platform adapters,
+(ii) independent
+task/state verifiers
+and complete outcome
+logs, (iii) five
+core metric groups
+at matched feasible
+load points, and
+(iv) qualified
+cross-layer explanations
+of architecture-specific
+costs and degradation.
+The practical priority
+is the Native Pod
+versus SIGs Agent
+Sandbox comparison
+on A/B; additional
+architectures and C
+require explicit
+pilot feasibility.
+
+The research contribution
+is not simply which
+product starts fastest,
+but \emph{under which
+workload conditions
+and measured resource
+budgets a lifecycle
+strategy changes
+user-visible completion,
+reliability, management
+work or idle cost}.
+No result or
+originality claim
+is asserted before
+the relevant experiments
+and prior-work checks
+are complete.
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{section}{References}
+
+\begin{thebibliography}{99}
+\small
+
+% References cited in the master proposal.
+% Additional reading is indexed in docs/proposal-technical-appendix.md.
+
+\bibitem{sandman}
+Y. Yan, H. Wang, W. Chen, X. Wang, J. Liu, X. Li,
+C. Qi, L. Fan, S. Li, Q. Wu, Y. Li, R. Wen, Q. Qu,
+Z. Wang, and B. Dumoulin,
+\emph{\href{https://arxiv.org/abs/2610.39711}
+{Sandman: Building and Operating Sandboxes for Agentic
+Reinforcement Learning on Shared Kubernetes}},
+arXiv:2610.39711, 2026.
+
+\bibitem{dietz2025}
+M. Z. Pan et al.,
+\emph{\href{https://arxiv.org/abs/2512.04123}
+{Measuring Agents in Production}},
+arXiv:2512.04123, 2026.
+Accepted at ICML 2026 (Oral Presentation).
+
+\bibitem{liu2026}
+B. Liu, H. Qiu, I. Goiri, R. Fonseca,
+R. Bianchini, and E. Choukse,
+\emph{\href{https://arxiv.org/abs/2608.00101}
+{Agentic Coding in the Wild: Characterizing
+GitHub Copilot Traces at Production Scale}},
+arXiv:2608.00101, 2026.
+
+\bibitem{ariesPaper}
+J. Park, L. Kondrashov, B. Zhou, H. Liu, Z. Liu,
+C. Lu, R. Mancini, E. Choukse, H. Javaid,
+G. Sviridov, T. Peng, C. Zhao, A. Avdeeva,
+A. Gusev, M. Kogias, L. Mai, and D. Ustiugov,
+\emph{\href{https://arxiv.org/abs/2607.29069}
+{Rethinking AI Cloud Infrastructure for Agentic Serving
+Systems with the Aries Experimentation Framework}},
+arXiv:2607.29069, 2026.
+
+\bibitem{deltaBox}
+Y. Dong, J. He, S. Liu, Y. Hou, D. Du, Z. Xu,
+S. Yu, B. Yang, Y. Xia, and H. Chen,
+\emph{\href{https://arxiv.org/abs/2605.22781}
+{DeltaBox: Scaling Stateful AI Agents with
+Millisecond-Level Sandbox Checkpoint/Rollback}},
+arXiv:2605.22781, 2026.
+
+\bibitem{terminalBench}
+M. A. Merrill et al.,
+\emph{\href{https://arxiv.org/abs/2601.11868}
+{Terminal-Bench: Benchmarking Agents on Hard,
+Realistic Tasks in Command Line Interfaces}},
+arXiv:2601.11868, 2026.
+
+\bibitem{datadog2026}
+C. Shamieh, A. Barksdale, J. Eastham, and O. Nzia,
+\emph{\href{https://www.datadoghq.com/blog/serverless-ai-agents/}
+{Default to Serverless for AI Agents, Then Let Production
+Data Decide What Moves}},
+Datadog Engineering Blog, October 29, 2026.
+
+\bibitem{frigaBenchmark}
+FrigaZzz,
+\emph{\href{https://github.com/FrigaZzz/agent-sandbox-benchmark}
+{AI Agent Sandbox Benchmark and Field Guide}},
+Open-source benchmark repository, October 2026.
+
+\bibitem{computeBenchmark}
+ComputeSDK,
+\emph{\href{https://github.com/computesdk/benchmarks}
+{ComputeSDK Benchmarks}},
+Open-source benchmark methodology and results repository,
+accessed November 2026.
+
+\bibitem{sigAgent}
+Kubernetes SIG Apps,
+\emph{\href{https://github.com/kubernetes-sigs/agent-sandbox}
+{Agent Sandbox: Kubernetes-Native Sandboxes for Stateful
+Workloads}},
+Official source repository and documentation,
+accessed November 2026.
+
+\bibitem{openSandbox}
+OpenSandbox Contributors,
+\emph{\href{https://github.com/opensandbox-group/OpenSandbox}
+{OpenSandbox}},
+Official source repository and documentation,
+accessed November 2026.
+
+\bibitem{substrate}
+Agent Substrate Contributors,
+\emph{\href{https://github.com/agent-substrate/substrate}
+{Agent Substrate: The Core System}},
+Official source repository and architecture documentation,
+accessed November 2026.
+
+\bibitem{fastSandbox}
+OpenSandbox Contributors,
+\emph{\href{https://github.com/opensandbox-group/fast-sandbox}
+{Fast Sandbox: High-Performance Sandbox Runtime on Kubernetes
+with Firecracker microVMs}},
+Official source repository and documentation,
+accessed November 2026.
+
+\bibitem{sigTuning}
+Kubernetes SIG Apps,
+\emph{\href{https://github.com/kubernetes-sigs/agent-sandbox/blob/main/docs/performance-tuning.md}
+{Agent Sandbox Performance Tuning}},
+Official engineering documentation,
+accessed November 2026.
+
+\bibitem{fastPerformance}
+OpenSandbox Contributors,
+\emph{\href{https://github.com/opensandbox-group/fast-sandbox}
+{Fast Sandbox: Performance and Benchmark Documentation}},
+ACK engineering measurements,
+October 2026.
+
+\bibitem{hermesAaaS}
+Kubernetes SIG Apps,
+\emph{\href{https://agent-sandbox.sigs.k8s.io/docs/use-cases/examples/hermes-agents-as-a-service/}
+{Hermes Agents as a Service}},
+Official use-case example,
+accessed November 2026.
+
+\bibitem{harborIntegration}
+Kubernetes SIG Apps,
+\emph{\href{https://agent-sandbox.sigs.k8s.io/docs/use-cases/examples/harbor-terminal-bench/}
+{Terminal-Bench with Harbor}},
+Official integration example,
+accessed November 2026.
+
+\bibitem{codexCloud}
+OpenAI,
+\emph{\href{https://help.openai.com/en/articles/20001545-using-codex-cloud}
+{Using Codex Cloud}},
+Official OpenAI Help Center documentation,
+accessed November 2026.
+
+\bibitem{sweAgent}
+SWE-agent Contributors,
+\emph{\href{https://github.com/SWE-agent/SWE-agent}
+{SWE-agent: Agent-Computer Interfaces for Autonomous
+Software Engineering}},
+Open-source project repository,
+accessed November 2026.
+
+\bibitem{ariesRepo}
+HyScale Lab,
+\emph{\href{https://github.com/hyscale-lab/ARIES}
+{ARIES: Agent Runtime and Infrastructure Experimentation System}},
+Open-source research framework,
+accessed November 2026.
+
+\end{thebibliography}
+
+\clearpage
+\appendix
+\section{Technical Appendix and Reproducibility Materials}
+\label{sec:technical-appendix}
+
+The proposal separates its research questions and methodology
+from version-specific implementation notes. The companion
+\href{https://github.com/Paperpaperdog/Agent_Sandbox_Proposal/blob/main/docs/proposal-technical-appendix.md}
+{Technical Appendix (Markdown)} preserves task recipes,
+adapter mappings, idle-policy and PoC checks, failure
+taxonomy, archived reading and optional trace-calibration.
+The \href{https://github.com/Paperpaperdog/Agent_Sandbox_Proposal/blob/924501eca5448bc4dca263364cbdb7f9e6718d04/natalia.tex}
+{complete pre-consolidation proposal (commit 924501e)}
+remains available for source-level audit.
+Neither file constitutes measured benchmark results.
+
+\end{document}
