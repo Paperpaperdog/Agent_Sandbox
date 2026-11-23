@@ -198,6 +198,9 @@ KO_REPOSITORY=172.16.101.40:5000/substrate
 | `SANDBOX_CLASSES` | `gvisor` | Passed to `ate-setup` |
 | `INSTALL_COUNTER_DEMO` | `true` | Deploys Counter demo |
 | `VERIFY_ACTOR_LIFECYCLE` | `true` | Runs suspend/resume acceptance |
+| `SUBSTRATE_EXPECTED_COMMIT` | empty | Set full tested upstream Git SHA to reject unexpected revisions |
+| `VERIFY_WORKER_PULL` | `false` | Enable only if CP→worker root SSH and `crictl` work |
+| `VERIFY_CLEANUP_ACTOR` | `false` | Keep accepted Counter Actor suspended for inspection |
 | `ROLLOUT_TIMEOUT` | `5m` | Increase on slow builds |
 
 ---
@@ -223,7 +226,11 @@ sudo deploy-grid5000/deploy-all.sh
 | 5 | `05-verify.sh` | Waits for healthy pods; creates a Counter Actor; request → suspend → resume → request; asserts the counter advanced by 1 |
 
 Logs are written under `deploy-grid5000/.logs/`. Image digests are filtered from
-log output. Apiserver backups live under `deploy-grid5000/.state/`.
+log output. Apiserver backups and reproducibility artifacts (upstream commit,
+local patch, Go version and binary SHA-256 hashes) live under
+`deploy-grid5000/.state/`. The installer **rebuilds** `ate-setup` on each run.
+The strict worker image-pull check is optional; if it is disabled, its
+status file records **SKIPPED**, not a successful pull.
 
 ### 4.2 Resume after a failure
 
@@ -262,8 +269,14 @@ A successful `05-verify.sh` ends with a line similar to:
 [grid5000] lifecycle verification passed: counter advanced from 1 to 2
 ```
 
-That means the Actor handled a request, was suspended, resumed, answered again,
-and preserved in-memory (persisted) counter state across the lifecycle.
+That means a **freshly named** Counter Actor handled a request, was suspended,
+resumed, answered again and preserved its application counter state. This is
+not by itself proof of full Tier 2 live process-memory restoration. The test
+Actor is left suspended by default, and its name is saved in
+`deploy-grid5000/.state/last-verify-actor.txt`. To automatically delete it,
+set `VERIFY_CLEANUP_ACTOR=true` only after confirming the pinned
+`kubectl ate delete actor` command works. A separate opt-in test can verify
+worker image pulling using root SSH and `crictl`.
 
 ### 5.3 Manual smoke check (optional)
 
