@@ -57,7 +57,9 @@ Kubernetes cluster (after [`../deploy-k8s-g5k`](../deploy-k8s-g5k)).
 | `04-deploy-substrate.sh` | Build `ate-setup`, deploy control plane + optional Counter demo |
 | `05-verify.sh` | Health checks + Actor request / suspend / resume / state check |
 
-Phases are safe to rerun. Logs: `deploy-grid5000/.logs/`. Local state: `.state/`.
+Phases can be rerun with the **same** pinned source revision and reservation settings. Logs: `deploy-grid5000/.logs/`. Local state: `.state/`.
+
+**Reservation safety:** `config.env` is required; the scripts no longer silently use `config.env.example`. The kube-apiserver flag renderer merges existing flags (Kubernetes v1.35+) rather than replacing them. `03-apply-source-patches.sh` renders the current `REGISTRY_ENDPOINT` into a temporary patch; when the IP or upstream checkout changes, use a reviewed clean/pinned Substrate checkout. Do not blindly reset a tree containing other work. **This is still an offline-tested script change, not a new Grid'5000 deployment result.**
 
 ## Notes
 
