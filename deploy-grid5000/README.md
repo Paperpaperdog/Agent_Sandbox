@@ -66,4 +66,7 @@ Phases can be rerun with the **same** pinned source revision and reservation set
 - Default storage is under `/tmp` (ephemeral G5K nodes). Change `DATA_ROOT` for longer runs.
 - Registry uses hostNetwork; Deployment strategy is `Recreate` to avoid rolling-update stalls.
 - Set `CONFIGURE_WORKERS_OVER_SSH=true` only when the control plane can SSH as root to every worker.
+- To **verify worker image pulling**, set `VERIFY_WORKER_PULL=true` only if the control plane can SSH as root to each worker and `crictl` is installed there. The verifier chooses a deployed `ate-system` image in `REGISTRY_ENDPOINT` by default; set `VERIFY_WORKER_PULL_IMAGE` to an exact deployed image if discovery fails. A skipped check is written as **SKIPPED**, never PASSED, to `.state/worker-pull-verification.txt`.
+- `ate-setup` is rebuilt from the current source on each deployment, rather than reused from an older checkout. The current Git commit, any local source patch, Go version and binary checksums are recorded under `.state/`. Set `SUBSTRATE_EXPECTED_COMMIT` to pin the upstream source revision strictly.
+- `05-verify.sh` now uses an independent, uniquely named Counter Actor for each run; `.state/last-verify-actor.txt` records the name. It remains **suspended** after verification by default; set `VERIFY_CLEANUP_ACTOR=true` only after confirming `kubectl ate delete actor` works in the pinned release.
 - The Docker shim in `tools/docker` only satisfies installer preflight (`docker info`); images are built with `ko`.
