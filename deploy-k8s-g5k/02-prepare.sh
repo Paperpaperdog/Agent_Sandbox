@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd "$(dirname "${BASH_SOURCE[0]:-$0}")"
+
 manage=$(awk NR==1 cp_node_list)
 USER_NAME=$(whoami)
 
@@ -7,7 +9,7 @@ rm -rf /home/$USER_NAME/.ssh/known_hosts
 
 for j in $(cat cp_node_list)
 do
-    scp /home/$USER_NAME/.ssh/id_rsa root@$j:/root/.ssh
+    scp /home/$USER_NAME/.ssh/id_rsa root@$j:/root/.ssh/id_rsa
 done
 
 total=15

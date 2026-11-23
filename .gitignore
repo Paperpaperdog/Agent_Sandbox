@@ -2,3 +2,15 @@
 **/.DS_Store
 .git.bak/
 **/.git.bak/
+
+# EnOSlib / deploy runtime artifacts
+deploy-k8s-g5k/cp_node_list
+deploy-k8s-g5k/all_node_list
+deploy-k8s-g5k/kubefed_inventory_*.ini
+deploy-k8s-g5k/**/opensandbox-server-config.yaml
+
+# Local envs / secrets
+.venv/
+venv/
+**/.python-grid5000.yaml
+*.qcow2
