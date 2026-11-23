@@ -78,7 +78,7 @@ fi
 
 # A unique actor prevents a resumed/stopped actor from a previous run from
 # influencing the next independent acceptance test.
-actor="${VERIFY_ACTOR_NAME}-$(date -u +%Y%m%d%H%M%S)-$"
+actor="${VERIFY_ACTOR_NAME}-$(date -u +%Y%m%d%H%M%S)-$BASHPID"
 [[ "$actor" =~ ^[a-z0-9][a-z0-9-]*$ && ${#actor} -le 63 ]] ||
   die "invalid generated test actor name: $actor"
 printf '%s\n' "$actor" >"$STATE_DIR/last-verify-actor.txt"
