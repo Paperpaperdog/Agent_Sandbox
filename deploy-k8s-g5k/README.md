@@ -24,6 +24,12 @@ Tear down from the frontend:
 bash 03-delete.sh
 ```
 
+## Next: Agent Substrate
+
+After the Kubernetes cluster is Ready, deploy Agent Substrate with
+[`../deploy-grid5000`](../deploy-grid5000) (`deploy-all.sh` on the control plane).
+That path is separate from Agent Sandbox / OpenSandbox installers in this directory.
+
 ## Documentation
 
 Full workflow (one-time setup, Kubernetes, Agent Sandbox, OpenSandbox):

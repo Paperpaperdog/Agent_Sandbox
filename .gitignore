@@ -9,7 +9,13 @@ deploy-k8s-g5k/all_node_list
 deploy-k8s-g5k/kubefed_inventory_*.ini
 deploy-k8s-g5k/**/opensandbox-server-config.yaml
 
-# Local envs / secrets
+# Agent Substrate deploy runtime
+deploy-grid5000/.logs/
+deploy-grid5000/.state/
+deploy-grid5000/config.env
+
+# Local experiment copies / secrets
+deploy-k8s-g5k-verify/
 .venv/
 venv/
 **/.python-grid5000.yaml

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+# The kind profile checks Docker even when this deployment uses neither kind
+# nor Docker. All actual images are built with ko and pushed to the local OCI
+# registry. Fail closed if the installer tries any other Docker operation.
+if [[ ${1:-} == info ]]; then
+  exit 0
+fi
+
+printf 'Docker operation is not available on Grid5000: %s\n' "$*" >&2
+exit 1

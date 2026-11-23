@@ -1,0 +1,51 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ate-local
+provisioner: kubernetes.io/no-provisioner
+reclaimPolicy: Delete
+volumeBindingMode: WaitForFirstConsumer
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ate-postgres-pv
+spec:
+  capacity:
+    storage: @@POSTGRES_SIZE@@
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ate-local
+  local:
+    path: @@DATA_ROOT@@/postgres
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - @@CONTROL_PLANE_HOST@@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ate-rustfs-pv
+spec:
+  capacity:
+    storage: @@RUSTFS_SIZE@@
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ate-local
+  local:
+    path: @@DATA_ROOT@@/rustfs
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - @@CONTROL_PLANE_HOST@@
