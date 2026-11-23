@@ -78,6 +78,9 @@ Important keys:
 | `DATA_ROOT` | Host paths for Postgres / RustFS / registry data |
 | `CONFIGURE_WORKERS_OVER_SSH` | `true` only if CP→worker root SSH works |
 | `INSTALL_COUNTER_DEMO` / `VERIFY_ACTOR_LIFECYCLE` | Demo + acceptance test |
+| `SUBSTRATE_EXPECTED_COMMIT` | Optional exact pinned upstream commit; abort if HEAD differs |
+| `VERIFY_WORKER_PULL` / `VERIFY_WORKER_PULL_IMAGE` | Optional strict root-SSH/`crictl pull` test of a deployed local-registry image per worker |
+| `VERIFY_PROXY_PORT` / `VERIFY_CLEANUP_ACTOR` | Local proxy port, optional explicit Actor deletion after verification |
 
 ## Phase D — Automated deploy
 
@@ -102,11 +105,15 @@ sudo deploy-grid5000/02-deploy-infrastructure.sh
 
 Logs: `deploy-grid5000/.logs/` (image digests filtered). Backups: `deploy-grid5000/.state/`.
 
+**Provenance and validation:** The deploy always rebuilds `ate-setup` from the current checkout. Save `.state/substrate-commit.txt`, `.state/substrate-source.patch`, `.state/go-version.txt`, and the binary SHA-256 files with each experiment record. A non-empty source patch is expected because the Grid'5000 adaptation modifies upstream tracked files. The optional worker-pull check requires root SSH and `crictl` on each Worker; when skipped, the verifier explicitly logs that the registry pull has **not** been tested. The Actor acceptance test uses a unique identity and records it in `.state/last-verify-actor.txt`; by default it leaves the Actor suspended for inspection.
+
 ## Acceptance criteria
 
 - All Kubernetes nodes Ready  
 - `ate-system` control-plane Pods healthy; Postgres / RustFS / Registry up  
-- Counter Actor lifecycle verification prints that the counter advanced (e.g. 1 → 2)  
+- Counter Actor lifecycle verification prints that the counter advanced (e.g. 1 → 2); this verifies the Counter application's continuity, not universal Tier 2 process-memory restoration
+- If `VERIFY_WORKER_PULL=true`, every configured Worker independently pulls a deployed local-registry Substrate image; otherwise this check is visibly marked `SKIPPED`
+- Source SHA and patch plus build artifact checksums are recorded for reproducibility  
 
 ## Operational notes
 
